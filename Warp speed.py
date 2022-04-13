@@ -2,25 +2,15 @@ import pygame
 from pygame.locals import *
 import random
 
+from Particle import particle
+from Rastro import Rastro
+
 Center = 0; Stoped = 1
 My_direction = Stoped
-#just my classes
-class particle():
-    def __init__(self, pos_x, pos_y):
-        self.pos_x = pos_x
-        self.pos_y = pos_y
-        self.speed_log = 1.01
-        self.time = 80
 
-class Rastro():
-    def __init__(self,posr_x,posr_y):
-        self.posr_x = posr_x
-        self.posr_y = posr_y
-
-
-def Change_position(lista, array_tam,My_direction):
+def Change_position(lista, tam, My_direction):
     check_par = 1
-    for i in range(array_tam):
+    for i in range(len(lista) - 1):
         #if the particle out of screen, so i'll put it in other position 
         if(lista[i].pos_x < 1 or lista[i].pos_x > 499 or lista[i].pos_y < 0 or lista[i].pos_y > 499):
             if(My_direction == Center):
@@ -32,7 +22,8 @@ def Change_position(lista, array_tam,My_direction):
                 lista[i].pos_x = random.randint(1,499)
                 lista[i].pos_y = random.randint(1,499)
                 lista[i].speed_log = 1.01
-        check_par+=1             
+        check_par+=1
+
 #just generating an array of particle
 def Generate_particle(how_mparticle):
     lista = []
@@ -71,7 +62,7 @@ def Main():
 
     quantity_particle = 100;lista_global = Generate_particle(quantity_particle)
     check_one_time = True;time_mls = pygame.time.Clock();key_pressed = []
-    control_color = 1; tam_stars = 4; tam_rastro = 4;
+    control_color = 1; tam_stars = 4; tam_rastro = 4
     background = Generate_particle(50)
     while True:
         #this variable control the time of the loop, like 30 miliseconds for each loop i did
