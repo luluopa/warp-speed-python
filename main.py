@@ -3,7 +3,7 @@ from pygame.locals import *
 import random
 
 from Particle import particle
-from Rastro import Rastro
+from Trail import trail
 
 Center = 0; Stoped = 1
 My_direction = Stoped
